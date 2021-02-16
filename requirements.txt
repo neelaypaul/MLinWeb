@@ -1,6 +1,6 @@
 alembic==1.4.1
 altair==4.1.0
-argon2-cffi @ file:///C:/ci/argon2-cffi_1613037959010/work
+argon2-cffi
 astor==0.8.1
 async-generator @ file:///home/ktietz/src/ci/async_generator_1611927993394/work
 attrs @ file:///tmp/build/80754af9/attrs_1604765588209/work
