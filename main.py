@@ -57,7 +57,6 @@ def run():
         output=""
         input_dict={'satisfaction_level':satisfaction_level,'last_evaluation':last_evaluation,'number_project':number_project,'average_montly_hours':300,'time_spend_company':time_spend_company,'Work_accident': Work_accident,'promotion_last_5years':promotion_last_5years,'department':'technical','salary' : salary}
         input_df = pd.DataFrame([input_dict])
-        print(input_df)
         if st.button("Predict"):
             output = predict(model=model, input_df=input_df)
             output = str(output)
