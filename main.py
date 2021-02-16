@@ -1,8 +1,32 @@
-from pycaret.classification import load_model, predict_model
 import streamlit as st
 import pandas as pd
+import joblib
 import numpy as np
-model = load_model('Final_model')
+model = joblib.load('Final_model.pkl')
+
+def predict_model(
+        estimator,
+        data,
+):
+
+    X_test_ = data.copy()
+    pred = np.nan_to_num(estimator.predict(X_test_))
+
+    label = pd.DataFrame(pred)
+    label.columns = ["Label"]
+
+
+    try:
+        label["Label"] = label["Label"].astype(int)
+    except:
+        pass
+
+
+    X_test_ = data.copy()
+    X_test_["Label"] = label["Label"].values
+
+
+    return X_test_
 
 def predict(model, input_df):
     predictions_df = predict_model(estimator=model, data=input_df)
@@ -31,8 +55,9 @@ def run():
         promotion_last_5years = st.number_input('promotion_last_5years',  min_value=0, max_value=50, value=0)
         salary = st.selectbox('salary', ['low', 'high','medium'])
         output=""
-        input_dict={'satisfaction_level':satisfaction_level,'last_evaluation':last_evaluation,'number_project':number_project,'time_spend_company':time_spend_company,'Work_accident': Work_accident,'promotion_last_5years':promotion_last_5years,'salary' : salary}
+        input_dict={'satisfaction_level':satisfaction_level,'last_evaluation':last_evaluation,'number_project':number_project,'average_montly_hours':300,'time_spend_company':time_spend_company,'Work_accident': Work_accident,'promotion_last_5years':promotion_last_5years,'department':'technical','salary' : salary}
         input_df = pd.DataFrame([input_dict])
+        print(input_df)
         if st.button("Predict"):
             output = predict(model=model, input_df=input_df)
             output = str(output)
