@@ -1,6 +1,1 @@
-joblib==1.0.1
-pandas
 streamlit==0.76.0
-numpy==1.19.5
-Pillow==8.1.0
-pycaret
