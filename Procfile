@@ -1,2 +1,1 @@
-web: streamlit run main.py
-heroku ps:scale web=1
+web: streamlit run "main.py"
