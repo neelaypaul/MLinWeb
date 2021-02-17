@@ -5,3 +5,6 @@ joblib
 sklearn
 scipy
 lightgbm
+joblib
+numba
+pyod
