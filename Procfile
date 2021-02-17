@@ -1,1 +1,2 @@
-web: streamlit run main.py runserver 0.0.0.0:$PORT
+web: streamlit run main.py
+heroku ps:scale web=1
