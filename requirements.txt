@@ -2,3 +2,5 @@ streamlit==0.76.0
 numpy
 pandas
 joblib
+sklearn
+scipy
